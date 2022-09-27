@@ -10,7 +10,7 @@ Clone this repo, and create volume:</br>
 
 **Or**</br>
 
-**docker container run -it -v <path-to-clone-repo>:/App -p 5000:5000 ghcr.io/yoas1/flask:1.0**</br></br>
+**docker container run -it -v <<path-to-clone-repo>>:/App -p 5000:5000 ghcr.io/yoas1/flask:1.0**</br></br>
 
 
 Go to: http://localhost:5000
