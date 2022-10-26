@@ -13,7 +13,7 @@ RUN apt-get update && apt-get -y upgrade && \
 
 COPY run.sh /opt/run.sh
 COPY ./noVNC/ /noVNC/
-
+COPY xfce-teal.jpg /usr/share/backgrounds/xfce/xfce-teal.jpg
 COPY xstartup /root/.vnc/xstartup
 
 RUN mkdir /var/run/sshd && \
