@@ -155,7 +155,6 @@ a[href$=".edu"].link-icon:before,
 a[href$=".gov"].link-icon:before,
 a[href$=".mil"].link-icon:before,
 a[href$="/"].link-icon:before,
-a[href$="/"].link-icon:before,
 a.link-icon.link-folder[href]:before {
   content: "\f07b"; /*Folder*/
 }
@@ -176,7 +175,6 @@ a[href$=".aspx"].link-icon:before,
 a[href$=".cfm"].link-icon:before,
 a[href*="?"].link-icon:before,
 a[href*="#"].link-icon:before,
-a.link-icon:not([href*='.']):before,
 a.link-icon.link[href]:before {
     content: "\f0c1"; /*link*/
 }
