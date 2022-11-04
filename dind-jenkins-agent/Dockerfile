@@ -6,7 +6,7 @@ ENV ADDRESS ""
 
 RUN apk update && \
     apk add --update docker && \
-    apk add git && \ 
+    apk add git nano openssh python3 py3-pip gcc g++ && \ 
     apk --no-cache add openjdk11 --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community && \
     cd /opt && \
     wget https://repo.jenkins-ci.org/public/org/jenkins-ci/main/remoting/4.9/remoting-4.9.jar && \
