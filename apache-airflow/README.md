@@ -6,7 +6,7 @@ Run with command:<br>
 docker container run -it --name airflow -p 8080:8080 yoas1/apache-airflow:v2.0.1
 ```
 Add volumes to logs and dags:</br>
-**Logs:** /root/airflow/logs
+**Logs:** /root/airflow/logs</br>
 **Dags:** /root/airflow/dags
 </br></br>
 
