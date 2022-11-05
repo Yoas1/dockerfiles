@@ -12,6 +12,7 @@ RUN apt update && \
     apt install libssl-dev -y && \
     apt install libkrb5-dev -y && \
     mkdir ~/airflow && cd ~/airflow && \
+    mkdir dags && chmod 777 dags && \
     export AIRFLOW_HOME=~/airflow && \
     pip3 install apache-airflow==$VERSION \
     --constraint https://raw.githubusercontent.com/apache/airflow/constraints-$VERSION/constraints-$PYV.txt && \
@@ -30,5 +31,3 @@ RUN apt update && \
 ENTRYPOINT [ "/bin/bash", "-c", "airflow webserver -p 8080 & airflow scheduler" ]
 
 
-# start the scheduler, should be ran in a separate window
-# airflow scheduler
