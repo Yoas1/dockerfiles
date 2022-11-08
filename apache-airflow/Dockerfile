@@ -1,6 +1,6 @@
 FROM ubuntu:20.04
 
-ARG VERSION=2.0.1 PYV=3.8
+ARG VERSION=2.4.2 PYV=3.8
 
 RUN apt update && \
     apt install software-properties-common -y && \
@@ -12,7 +12,8 @@ RUN apt update && \
     apt install libssl-dev -y && \
     apt install libkrb5-dev -y && \
     mkdir ~/airflow && cd ~/airflow && \
-    mkdir dags && chmod 777 dags && \
+    mkdir dags && \
+    mkdir plugins && \
     export AIRFLOW_HOME=~/airflow && \
     pip3 install apache-airflow==$VERSION \
     --constraint https://raw.githubusercontent.com/apache/airflow/constraints-$VERSION/constraints-$PYV.txt && \
