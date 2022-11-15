@@ -11,7 +11,7 @@ For arm64 run:<br>
 docker container run -it --name gogs -p 3000:3000 -p 122:22 yoas1/gogs:0.12.10-arm64
 ```
 
-Add volumes to logs and dags:</br>
+Add volumes to logs, data and repositories:</br>
 **Logs:** /gogs/log</br>
 **Repositories:** /root/gogs-repositories<br>
 **Data:** /data
