@@ -1,11 +1,13 @@
-FROM ubuntu:18.04
+FROM ubuntu:latest
+
+ARG VERSION=0.12.10
 
 EXPOSE 3000
 
-RUN apt-get update && \
-    apt-get install -y wget git && \
-    wget --no-check-certificate https://dl.gogs.io/0.12.10/gogs_0.12.10_linux_amd64.tar.gz && \
-    tar -xf gogs_0.12.10_linux_amd64.tar.gz && \
-    rm gogs_0.12.10_linux_amd64.tar.gz
+RUN apt update && \
+    apt install -y wget git && \
+    wget https://dl.gogs.io/"$VERSION"/gogs_"$VERSION"_linux_amd64.tar.gz && \
+    tar -xf gogs_"$VERSION"_linux_amd64.tar.gz && \
+    rm gogs_"$VERSION"_linux_amd64.tar.gz
 
 ENTRYPOINT ["/bin/bash", "-c", "./gogs/gogs web"]
