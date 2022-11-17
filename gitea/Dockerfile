@@ -13,8 +13,10 @@ RUN apt update && \
     mkdir -p /var/lib/gitea/{custom,data,log} && \
     chown -R git:git /var/lib/gitea/ && \
     chmod -R 750 /var/lib/gitea/ && \
+    chmod -R 770 /usr/local/bin/ && \
     mkdir /etc/gitea && \
     chown root:git /etc/gitea && \
+    chown root:git /usr/local/bin && \
     chmod 770 /etc/gitea && \
     export GITEA_WORK_DIR=/var/lib/gitea/ && \
     mv gitea /usr/bin/gitea
