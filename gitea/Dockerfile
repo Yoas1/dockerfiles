@@ -1,13 +1,12 @@
-FROM ubuntu:latest
+FROM ubuntu:18.04
 
 ARG VERSION=1.17.3
 
-EXPOSE 3000
+EXPOSE 3000 22
 
 RUN apt update && \
-    apt install -y wget git && \
-    wget -O gitea https://dl.gitea.io/gitea/$VERSION/gitea-$VERSION-linux-amd64 && \
-    echo hello && \
+    apt install -y wget git openssh-server sudo && \
+    wget --no-check-certificate -O gitea https://dl.gitea.io/gitea/$VERSION/gitea-$VERSION-linux-amd64 && \
     chmod +x gitea && \
     adduser --system --shell /bin/bash --gecos 'Git Version Control' --group --disabled-password --home /home/git git && \
     mkdir -p /var/lib/gitea/{custom,data,log} && \
@@ -21,4 +20,4 @@ RUN apt update && \
     export GITEA_WORK_DIR=/var/lib/gitea/ && \
     mv gitea /usr/local/bin/gitea
 
-ENTRYPOINT ["/bin/bash", "-c", "runuser -u git -- /usr/local/bin/gitea web -c /etc/gitea/app.ini"]
+ENTRYPOINT ["/bin/bash", "-c", "service ssh start & runuser -u git -- /usr/local/bin/gitea web -c /etc/gitea/app.ini"]
