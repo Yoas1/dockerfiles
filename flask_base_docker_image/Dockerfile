@@ -1,18 +1,24 @@
-FROM ubuntu
+FROM ubuntu:20.04
 
 WORKDIR /App
 
+COPY requirements.txt requirements.txt
+COPY run.sh /tmp/run.sh
+
+ENV TZ=Asia/Jerusalem
+ENV DEBIAN_FRONTEND noninteractive
+
 RUN apt-get update -y && \
     apt-get install -y python3 python3-pip sqlite3 git && \
+    pip3 install -r requirements.txt && \
+    apt-get install -yq tzdata && \
+    ln -fs /usr/share/zoneinfo/Asia/Jerusalem /etc/localtime && \
+    dpkg-reconfigure -f noninteractive tzdata && \
     rm -rf /var/lib/apt/lists/* && \
-    pip3 install flask flask_sqlalchemy markdown pygments
+    chmod +x /tmp/run.sh
 
-COPY . /App
-# Convert the line endings from DOS to UNIX format
-RUN chmod +x run.sh && sed -i -e 's/\r$//' run.sh 
-
-ENV FLASK_APP=app.py
+ENV FLASK_APP=/App/app.py
 ENV FLASK_DEBUG=1
 
 
-ENTRYPOINT ["./run.sh"]
+ENTRYPOINT ["/tmp/run.sh"]
